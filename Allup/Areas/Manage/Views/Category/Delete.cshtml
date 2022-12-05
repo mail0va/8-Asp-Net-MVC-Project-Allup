@@ -1,0 +1,25 @@
+﻿@*@model Category
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Category Name: @Model.Name</h4>
+                        <h4 class="card-title">Category Image: <img src="~/assets/images/@Model.Image" /> </h4>
+                        <p class="text-danger">Are you sure ?</p>
+                        <form style="display: inline-block" method="post" asp-action="Delete">
+                        <button class="btn btn-secondary" type="submit">Submit</button>
+                        </form>
+                        <a class="btn btn-primary" asp-action="Index">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+
