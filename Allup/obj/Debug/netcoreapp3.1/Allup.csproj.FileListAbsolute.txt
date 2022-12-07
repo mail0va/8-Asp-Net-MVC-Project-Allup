@@ -169,3 +169,5 @@ C:\Users\Lenovo\source\repos\Allup\Allup\obj\Debug\netcoreapp3.1\Razor\Views\Sha
 C:\Users\Lenovo\source\repos\Allup\Allup\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Product\Default.cshtml.g.cs
 C:\Users\Lenovo\source\repos\Allup\Allup\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Slider\Default.cshtml.g.cs
 C:\Users\Lenovo\source\repos\Allup\Allup\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Category\Detail.cshtml.g.cs
+C:\Users\Lenovo\source\repos\Allup\Allup\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Product\Index.cshtml.g.cs
+C:\Users\Lenovo\source\repos\Allup\Allup\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Product\Create.cshtml.g.cs
