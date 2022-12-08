@@ -171,3 +171,13 @@ C:\Users\Lenovo\source\repos\Allup\Allup\obj\Debug\netcoreapp3.1\Razor\Views\Sha
 C:\Users\Lenovo\source\repos\Allup\Allup\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Category\Detail.cshtml.g.cs
 C:\Users\Lenovo\source\repos\Allup\Allup\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Product\Index.cshtml.g.cs
 C:\Users\Lenovo\source\repos\Allup\Allup\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Product\Create.cshtml.g.cs
+C:\Users\Lenovo\source\repos\Allup\Allup\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Lenovo\source\repos\Allup\Allup\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Lenovo\source\repos\Allup\Allup\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Lenovo\source\repos\Allup\Allup\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Lenovo\source\repos\Allup\Allup\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Lenovo\source\repos\Allup\Allup\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Product\Update.cshtml.g.cs
+C:\Users\Lenovo\source\repos\Allup\Allup\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Account\Register.cshtml.g.cs
+C:\Users\Lenovo\source\repos\Allup\Allup\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Account\Login.cshtml.g.cs
+C:\Users\Lenovo\source\repos\Allup\Allup\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\Lenovo\source\repos\Allup\Allup\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs

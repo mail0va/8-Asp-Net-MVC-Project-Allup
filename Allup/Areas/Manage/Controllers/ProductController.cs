@@ -28,7 +28,7 @@ namespace Allup.Areas.Manage.Controllers
                .Include(t => t.Brand)
                .Include(t => t.Category)
                .Include(t => t.ProductTags).ThenInclude(pt => pt.Tag)
-               .Where(p=>p.IsDeleted==false)
+               .Where(p => p.IsDeleted == false)
                .ToListAsync();
 
             return View(products);
@@ -117,7 +117,7 @@ namespace Allup.Areas.Manage.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update( int? id,Product product)
+        public async Task<IActionResult> Update(int? id, Product product)
         {
             ViewBag.Brands = await _context.Brands.Where(b => b.IsDeleted == false).ToListAsync();
             ViewBag.Categories = await _context.Categories.Where(c => c.IsDeleted == false).ToListAsync();
@@ -125,7 +125,79 @@ namespace Allup.Areas.Manage.Controllers
 
             if (!ModelState.IsValid) return View(product);
 
+            Product existedProduct = await _context.Products
+                .Include(c => c.ProductTags)
+                .FirstOrDefaultAsync(c => c.IsDeleted == false && c.Id == id);
+
+            List<ProductTag> productTags = new List<ProductTag>();
+
+            foreach (int tagId in product.TagIds)
+            {
+                if (product.TagIds.Where(t => t == tagId).Count() > 1)
+                {
+                    ModelState.AddModelError("TagIds", "Tag yalniz bir defe secile biler");
+                    return View(product);
+                }
+                if (!await _context.Tags.AnyAsync(c => c.IsDeleted == false && c.Id == tagId))
+                {
+                    ModelState.AddModelError("TagIds", "Secilen Tag sehvdir ");
+                    return View(product);
+                }
+                ProductTag productTag = new ProductTag
+                {
+                    CreatedAt = DateTime.UtcNow.AddHours(+4),
+                    CreatedBy = "System",
+                    IsDeleted = false,
+                    TagId = tagId
+                };
+                productTags.Add(productTag);
+            }
+            existedProduct.ProductTags = productTags;
+
+            await _context.SaveChangesAsync();
+
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null) return NotFound();
+            Product product = await _context.Products.FirstOrDefaultAsync(p => p.IsDeleted == false && p.Id == id);
+            if (product == null) return NotFound();
+
+            var productTags = await _context.ProductTags.Where(t => t.ProductId == id).ToListAsync();
+            foreach (var tag in productTags)
+            {
+                _context.ProductTags.Remove(tag);
+                await _context.SaveChangesAsync();
+            }
+            
+            product.IsDeleted = true;
+            product.DeletedAt = DateTime.UtcNow.AddHours(+4);
+            product.DeletedBy = "System";
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null) return NotFound();
+
+            Product product = await _context.Products.Include(p => p.Category)
+                .Include(p => p.Brand)
+                .Include(p => p.ProductTags)
+                .FirstOrDefaultAsync(p => p.Id == id);
+
+            ViewBag.category = await _context.Categories
+                .FirstOrDefaultAsync(c => c.Id == product.CategoryId);
+
+            ViewBag.tags = await _context.ProductTags
+                 .Where(t => t.ProductId == id)
+                 .Select(t => t.Tag)
+                 .ToListAsync();
+            return View(product);
+        }
+
     }
 }

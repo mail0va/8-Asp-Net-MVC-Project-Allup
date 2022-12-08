@@ -24,13 +24,13 @@ namespace Allup.Areas.Manage.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Brand brand)
+        public IActionResult Create(Brand brand)
         {
             if (!ModelState.IsValid) return View();
             return Content(brand.Name);
